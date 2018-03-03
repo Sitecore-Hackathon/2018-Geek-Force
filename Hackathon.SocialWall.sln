@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D27C83
 		documentation\images\hackathon.png = documentation\images\hackathon.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.SocialWall.Feature.FetchSocialFeeds", "src\Feature\code\Hackathon.SocialWall.Feature.FetchSocialFeeds.csproj", "{A9F23AEF-9D7A-4BE3-BC86-95B7DFF3A1C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.SocialWall.Feature.FetchSocialFeeds", "src\Feature\FetchSocialFeeds\code\Hackathon.SocialWall.Feature.FetchSocialFeeds.csproj", "{A9F23AEF-9D7A-4BE3-BC86-95B7DFF3A1C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
