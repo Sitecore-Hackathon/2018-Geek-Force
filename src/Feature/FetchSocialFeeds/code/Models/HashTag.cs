@@ -11,5 +11,6 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Models
         public SocialNetwork PostSource { get; set; }
         public string Hashtag { get; set; }
         public long InstagramMaxId { get; set; }
+
     }
 }

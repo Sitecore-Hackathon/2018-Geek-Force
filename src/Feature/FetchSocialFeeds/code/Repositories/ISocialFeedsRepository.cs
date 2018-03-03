@@ -11,6 +11,9 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
    public interface ISocialFeedsRepository : IModelRepository
     {
         IEnumerable<HashTag> GetHashTags();
+        TwitterConfiguration GeTwitterConfiguration();
         bool SaveFeeds(List<Post> posts);
+        long GetMaxTwitterPostId(string hashTag);
+        long GetMinTwitterPostId(string hashTag);
     }
 }

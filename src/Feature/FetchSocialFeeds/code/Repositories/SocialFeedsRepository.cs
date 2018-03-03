@@ -19,5 +19,24 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public TwitterConfiguration GeTwitterConfiguration()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveFeeds(List<Post> posts)
+        {
+            throw new NotImplementedException();
+        }
+
+       public long GetMaxTwitterPostId(string hashTag)
+        {
+            throw new NotImplementedException();
+        }
+       public long GetMinTwitterPostId(string hashTag)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
