@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{17DD5718-6E13-4F2C-9738-B410396D4552}"
 EndProject
@@ -30,15 +30,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D27C83
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.SocialWall.Feature.FetchSocialFeeds", "src\Feature\FetchSocialFeeds\code\Hackathon.SocialWall.Feature.FetchSocialFeeds.csproj", "{A9F23AEF-9D7A-4BE3-BC86-95B7DFF3A1C7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{A2277396-7DEB-4C46-A35D-F49E97250C78}"
-	ProjectSection(SolutionItems) = preProject
-		Dependencies\Microsoft.Extensions.DependencyInjection.Abstractions.dll = Dependencies\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-		Dependencies\Sitecore.XA.Foundation.IoC.dll = Dependencies\Sitecore.XA.Foundation.IoC.dll
-		Dependencies\Sitecore.XA.Foundation.Mvc.dll = Dependencies\Sitecore.XA.Foundation.Mvc.dll
-		Dependencies\Sitecore.XA.Foundation.RenderingVariants.dll = Dependencies\Sitecore.XA.Foundation.RenderingVariants.dll
-		Dependencies\Sitecore.XA.Foundation.Variants.Abstractions.dll = Dependencies\Sitecore.XA.Foundation.Variants.Abstractions.dll
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

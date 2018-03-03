@@ -1,4 +1,5 @@
-﻿using Sitecore.XA.Foundation.Mvc.Repositories.Base;
+﻿using Hackathon.SocialWall.Feature.FetchSocialFeeds.Models;
+using Sitecore.XA.Foundation.Mvc.Repositories.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
 {
    public interface IFetchSocialFeedsRepository : IModelRepository
     {
+        IEnumerable<HashTag> GetHashTags();
     }
 }

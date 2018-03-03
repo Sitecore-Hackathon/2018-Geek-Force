@@ -1,4 +1,5 @@
-﻿using Sitecore.DependencyInjection;
+﻿using Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories;
+using Sitecore.DependencyInjection;
 using Sitecore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Agents
 
                 Log.Info("PostFetching-Scheduler: Event called! at " + DateTime.Now.ToString(), new object());
 
-                ServiceLocator.ServiceProvider.GetService<>();
+                FetchSocialFeedsRepository fetchRepo = (FetchSocialFeedsRepository)ServiceLocator.ServiceProvider.GetService(typeof(IFetchSocialFeedsRepository));
+
 
                 List<Models.HashTag> hashtags = HashTags.GetHashTagCollection(SocialNetwork.Instagram);
                 Int32 videosFound = 0;
