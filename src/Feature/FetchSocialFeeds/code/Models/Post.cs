@@ -23,5 +23,6 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Models
         public DateTime DateCreated { get; set; }
         public bool IsVIPContent { get; set; }
         public string hashTag { get; set; }
+        public string PostUrl { get; set; }
     }
 }
