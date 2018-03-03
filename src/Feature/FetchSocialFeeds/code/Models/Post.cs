@@ -18,6 +18,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Models
         public string Description { get; set; }
         public DateTime PostDateCreated { get; set; }
         public string DateApproved { get; set; }
+        public string DateDeclined { get; set; }
         public PostStatus Status { get; set; }
         public int Likes { get; set; }
         public DateTime DateCreated { get; set; }
