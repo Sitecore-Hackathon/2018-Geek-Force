@@ -5,6 +5,7 @@ using System.Web;
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.Models;
 using Sitecore;
 using Sitecore.Data;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.SecurityModel;
 using Sitecore.XA.Foundation.Mvc.Repositories.Base;
@@ -127,31 +128,39 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
             List<Post> vdoList = new List<Post>();
             Item targetItem = Sitecore.Context.Database.Items["{F750B39A-3601-4AC2-8380-B8ABFE97D4DE}"];
             Item[] postItems = targetItem.GetChildren().ToArray();
-            vdoList=postItems.Where(p => (p.Fields["PostSource"].Value).Equals(socialNetwork) && (p.Fields["PostType"]).Equals(postType)).Take(pageNumber).ToList<Post>();
-            totalCount = tempList.Count();
-            //foreach (var temp in postItems)
-            //{
-            //    Post oPost = new Post();
-            //    oPost.Id = temp.ID;//Should be SItecore ID
-            //    oPost.PostSource = new ID(temp.Fields["PostSource"].Value);
-            //    oPost.DateApproved = temp.Fields["DateApproved"].Value;
-            //    oPost.DateCreated = (temp.Fields["DateCreated"].Value);
-            //    oPost.Description = temp.Fields["Description"].Value;
-            //    oPost.hashTag = temp.Fields["DateApproved"].Value;
-            //    oPost.IsVIPContent = temp.Fields["DateApproved"].Value;
-            //    oPost.Likes = temp.Fields["DateApproved"].Value;
-            //    oPost.PostDateCreated = temp.Fields["DateApproved"].Value;
-            //    oPost.PostSource = temp.Fields["DateApproved"].Value;
-            //    oPost.PostType = temp.Fields["DateApproved"].Value;
-            //    oPost.PostUrl = temp.Fields["DateApproved"].Value;
-            //    oPost.PostUrl = temp.Fields["DateApproved"].Value;
-            //    oPost.SocialNetworkUsername = temp.Fields["DateApproved"].Value;
-            //    oPost.SocialNetworkUserPictureUrl = temp.Fields["DateApproved"].Value;
-            //    oPost.Status = temp.Fields["DateApproved"].Value;
-            //    oPost.ThumbnailUrl = temp.Fields["DateApproved"].Value;
-            //    HashtagList.Add(oHashtag);
-            //}
-            return tempList;
+            //vdoList=postItems.Where(p => (p.Fields["PostSource"].Value).Equals(socialNetwork) && (p.Fields["PostType"]).Equals(postType)).Take(pageNumber).ToList<Post>();
+            //totalCount = tempList.Count();
+            foreach (var temp in postItems)
+            {
+                if(temp.Fields["PostSource"].Value.Equals(socialNetwork) && temp.Fields["PostType"].Equals(postType))
+                {
+                    Post oPost = new Post();
+                    //oPost.Id = temp.ID;//Should be SItecore ID
+                    oPost.PostSource = new ID(temp.Fields["PostSource"].Value);
+                    oPost.DateApproved = temp.Fields["DateApproved"].Value;
+                    
+                     //(DateField)temp.Fields["DateCreated"];
+                    DateField dateField = (DateField)temp.Fields["DateCreated"];
+                    oPost.DateCreated = dateField.DateTime.Date;
+                    oPost.Description = temp.Fields["Description"].Value;
+                    oPost.hashTag = temp.Fields["DateApproved"].Value;
+                    //oPost.IsVIPContent = temp.Fields["DateApproved"].Value;
+                    oPost.Likes =System.Convert.ToInt32( temp.Fields["Likes"].Value);
+                    dateField = (DateField)temp.Fields["PostDateCreated"];
+                    oPost.PostDateCreated = dateField.DateTime.Date;
+
+                    oPost.PostType = temp.Fields["PostType"].Value;
+                    oPost.PostUrl = temp.Fields["PostUrl"].Value;
+                    oPost.SocialNetworkPostId = temp.Fields["SocialNetworkPostId"].Value;
+                    oPost.SocialNetworkUsername = temp.Fields["SocialNetworkUsername"].Value;
+                    oPost.SocialNetworkUserPictureUrl = temp.Fields["SocialNetworkUserPictureUrl"].Value;
+                    //oPost.Status =PostStatus. temp.Fields["Status"].Value;
+                    oPost.ThumbnailUrl = temp.Fields["ThumbnailUrl"].Value;
+                    vdoList.Add(oPost);
+                }
+            }
+            totalCount = vdoList.Count();
+            return vdoList;
         }
     }
 }
