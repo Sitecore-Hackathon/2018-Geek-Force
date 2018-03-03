@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
 {
-   public interface IFetchSocialFeedsRepository : IModelRepository
+   public interface ISocialFeedsRepository : IModelRepository
     {
         IEnumerable<HashTag> GetHashTags();
+        bool SaveFeeds(List<Post> posts);
     }
 }

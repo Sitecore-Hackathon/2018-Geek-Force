@@ -8,11 +8,11 @@ using System.Web;
 
 namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Pipelines
 {
-    public class RegisterFetchSocialFeedsService : IServicesConfigurator
+    public class RegisterSocialFeedsService : IServicesConfigurator
     {
         public void Configure(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<IFetchSocialFeedsRepository,FetchSocialFeedsRepository>();
+            serviceCollection.AddTransient<ISocialFeedsRepository,SocialFeedsRepository>();
             
         }
     }

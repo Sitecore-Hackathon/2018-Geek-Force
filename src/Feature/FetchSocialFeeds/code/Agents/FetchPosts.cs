@@ -15,35 +15,19 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Agents
         {
             try
             {
+                SocialFeedsRepository fetchRepo = (SocialFeedsRepository)ServiceLocator.ServiceProvider.GetService(typeof(ISocialFeedsRepository));
+                IEnumerable<Models.HashTag> hashtags = fetchRepo.GetHashTags();
 
+                foreach (var hashtag in hashtags)
+                {
+                    Posts.AddFromInstagram(hashtag.Hashtag, hashtag.InstagramMaxId);
+                }
                 Log.Info("PostFetching-Scheduler: Event called! at " + DateTime.Now.ToString(), new object());
-
-                FetchSocialFeedsRepository fetchRepo = (FetchSocialFeedsRepository)ServiceLocator.ServiceProvider.GetService(typeof(IFetchSocialFeedsRepository));
-
-
-                List<Models.HashTag> hashtags = HashTags.GetHashTagCollection(SocialNetwork.Instagram);
-                Int32 videosFound = 0;
-
-                try
-                {
-                    foreach (var hashtag in hashtags)
-                    {
-                        Posts.AddFromInstagram(hashtag.Hashtag, hashtag.InstagramMaxId);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    writer.WriteToEventLog(source, ex);
-                }
 
             }
             catch (Exception ex)
             {
-                Log.Info("Exception:1 Thrown in Form Schedule, Error: " + ex.Message, new object());
-
-            }
-            finally
-            {
+                Log.Info("Exception Thrown in Form Feed Fetch Schedule, Error: " + ex.Message, new object());
 
             }
         }

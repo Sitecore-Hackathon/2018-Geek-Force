@@ -8,14 +8,14 @@ using Sitecore.XA.Foundation.RenderingVariants.Repositories;
 
 namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
 {
-    public class FetchSocialFeedsRepository : ListRepository, IFetchSocialFeedsRepository
+    public class SocialFeedsRepository : ListRepository, ISocialFeedsRepository
     {
         public IEnumerable<HashTag> GetHashTags()
         {
             throw new NotImplementedException();
         }
 
-        public IRenderingModelBase GetModel()
+        public override IRenderingModelBase GetModel()
         {
             throw new NotImplementedException();
         }
