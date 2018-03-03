@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sitecore.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,11 +11,10 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds
         public const string BackendAdmin = "backendAdmin";
     }
 
-    public enum SocialNetwork
+    public struct SocialNetwork
     {
-        All = 0,
-        Twitter = 1,
-        Instagram = 2
+       public static ID Twitter =new ID("{0D45B97A-ED29-4F50-A75C-C9313F69F769}");
+       public static ID Instagram = new ID("{EA5E01DA-3280-46FD-A7F2-4587EA2F5B51}");
     }
 
     public enum PostType
