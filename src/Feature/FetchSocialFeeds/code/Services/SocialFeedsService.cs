@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.Models;
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories;
+using Sitecore.Data;
 using TweetSharp;
 
 namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Services
