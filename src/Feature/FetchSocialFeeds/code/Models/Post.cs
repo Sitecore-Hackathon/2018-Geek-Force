@@ -10,7 +10,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Models
     {
         public int Id { get; set; }
         public ID PostSource { get; set; }
-        public PostType PostType { get; set; }
+        public ID PostType { get; set; }
         public string SocialNetworkPostId { get; set; }
         public long SocialNetworkUserId { get; set; }
         public string SocialNetworkUsername { get; set; }

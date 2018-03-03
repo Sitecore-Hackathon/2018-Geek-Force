@@ -16,6 +16,6 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
         long GetMaxTwitterPostId(string hashTag);
         long GetMinTwitterPostId(string hashTag);
         bool SaveFeeds(List<Post> posts);
-        //bool UpdateFeed(Post post);
+        List<Post> GetPosts(int pageNumber, SocialNetwork socialNetwork, out int? totalCount, bool? isVipContent = null, PostType? postType = null);
     }
 }

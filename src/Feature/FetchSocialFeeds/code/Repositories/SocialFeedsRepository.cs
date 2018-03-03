@@ -29,6 +29,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
             }
             return HashtagList.AsEnumerable<HashTag>();
         }
+       
 
         public override IRenderingModelBase GetModel()
         {
@@ -98,7 +99,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
                     catch (Exception ex)
                     {
                         newItem.Editing.CancelEdit();
-                        Sitecore.Diagnostics.Log.Info("SMEForm-" + newItem.ID + "- Master Mode - exception" + ex, typeof(object));
+                        Sitecore.Diagnostics.Log.Info("SocialWall-" + newItem.ID + "- Master Mode - exception" + ex, typeof(object));
                         status = false;
                     }
                 }
@@ -109,6 +110,43 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
             //{
             //    throw new NotImplementedException();
             //}
+        }
+
+        public List<Post> GetPosts(int pageNumber, ID socialNetwork, out int? totalCount, bool? isVipContent = null, PostType? postType = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Post> GetPosts(int pageNumber, SocialNetwork socialNetwork, out int? totalCount, bool? isVipContent = null, PostType? postType = null)
+        {
+            List<Post> vdoList = new List<Post>();
+            Item targetItem = Sitecore.Context.Database.Items["{F750B39A-3601-4AC2-8380-B8ABFE97D4DE}"];
+            Item[] postItems = targetItem.GetChildren().ToArray();
+            vdoList=postItems.Where(p => (p.Fields["PostSource"].Value).Equals(socialNetwork) && (p.Fields["PostType"]).Equals(postType)).Take(pageNumber).ToList<Post>();
+            totalCount = tempList.Count();
+            //foreach (var temp in postItems)
+            //{
+            //    Post oPost = new Post();
+            //    oPost.Id = temp.ID;//Should be SItecore ID
+            //    oPost.PostSource = new ID(temp.Fields["PostSource"].Value);
+            //    oPost.DateApproved = temp.Fields["DateApproved"].Value;
+            //    oPost.DateCreated = (temp.Fields["DateCreated"].Value);
+            //    oPost.Description = temp.Fields["Description"].Value;
+            //    oPost.hashTag = temp.Fields["DateApproved"].Value;
+            //    oPost.IsVIPContent = temp.Fields["DateApproved"].Value;
+            //    oPost.Likes = temp.Fields["DateApproved"].Value;
+            //    oPost.PostDateCreated = temp.Fields["DateApproved"].Value;
+            //    oPost.PostSource = temp.Fields["DateApproved"].Value;
+            //    oPost.PostType = temp.Fields["DateApproved"].Value;
+            //    oPost.PostUrl = temp.Fields["DateApproved"].Value;
+            //    oPost.PostUrl = temp.Fields["DateApproved"].Value;
+            //    oPost.SocialNetworkUsername = temp.Fields["DateApproved"].Value;
+            //    oPost.SocialNetworkUserPictureUrl = temp.Fields["DateApproved"].Value;
+            //    oPost.Status = temp.Fields["DateApproved"].Value;
+            //    oPost.ThumbnailUrl = temp.Fields["DateApproved"].Value;
+            //    HashtagList.Add(oHashtag);
+            //}
+            return tempList;
         }
     }
 }
