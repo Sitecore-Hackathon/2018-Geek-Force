@@ -64,6 +64,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
             var master = Sitecore.Configuration.Factory.GetDatabase("master");
             Item parentItem = master.Items["//sitecore/content/Hackathon/GeekForce/Data/Social Wall Folder/Post Folder"];
             TemplateItem template = master.GetTemplate("{D1654215-CF06-4FA7-B8E7-D64B24DBB24C}");
+            bool status = false;
             using (new SecurityDisabler())
             {
                 foreach(Post post in posts)
@@ -91,16 +92,18 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
                             newItem["DateCreated"] = DateUtil.ToIsoDate(post.DateCreated);
                             newItem["hashTag"] = post.hashTag;
                             newItem.Editing.EndEdit();
+                            status = true;
                         }
                     }
                     catch (Exception ex)
                     {
                         newItem.Editing.CancelEdit();
                         Sitecore.Diagnostics.Log.Info("SMEForm-" + newItem.ID + "- Master Mode - exception" + ex, typeof(object));
+                        status = false;
                     }
                 }
-                
-                throw new NotImplementedException();
+
+                return status;
             }
             //public bool UpdateFeed(Post post)
             //{
