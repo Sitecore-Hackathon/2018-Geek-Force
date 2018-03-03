@@ -138,6 +138,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\SocialFeedsRepository.cs" />
     <Compile Include="Repositories\ISocialFeedsRepository.cs" />
+    <Compile Include="Services\ISocialFeedsService.cs" />
+    <Compile Include="Services\SocialFeedsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\web.config" />

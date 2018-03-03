@@ -12,8 +12,10 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
     {
         IEnumerable<HashTag> GetHashTags();
         TwitterConfiguration GeTwitterConfiguration();
-        bool SaveFeeds(List<Post> posts);
+        
         long GetMaxTwitterPostId(string hashTag);
         long GetMinTwitterPostId(string hashTag);
+        bool SaveFeeds(List<Post> posts);
+        //bool UpdateFeed(Post post);
     }
 }
