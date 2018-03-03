@@ -1,5 +1,7 @@
 ﻿using Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories;
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Sitecore.DependencyInjection;
 using Sitecore.XA.Foundation.Mvc.Controllers;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,14 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Controllers
         // GET: Forms
         protected readonly ISocialFeedsService SocialFeedsService;
 
-        public SocialWallController(ISocialFeedsService socialFeedsService)
+        //public SocialWallController(ISocialFeedsService socialFeedsService)
+        //{
+        //    this.SocialFeedsService = socialFeedsService;
+        //}
+
+        public SocialWallController()
         {
-            this.SocialFeedsService = socialFeedsService;
+            this.SocialFeedsService = ServiceLocator.ServiceProvider.GetService<ISocialFeedsService>();
         }
         // GET: SocialWall
         protected override object GetModel()

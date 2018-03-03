@@ -74,7 +74,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Services
             {
                 Parallel.ForEach(currentResults.Statuses, parallerOptions, item =>
                 {
-                    if (TwitterPostType(item) == PostType.Text)
+                    if (TwitterPostType(item) == PostType.Text && !string.IsNullOrEmpty(item.Id.ToString()))
                     {
                         Post post = new Post();
                         post.PostSource = SocialNetwork.Twitter;
@@ -92,7 +92,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Services
                         post.Status = PostStatus.Pending;
                         //if (post.PostDateCreated >= Settings.PostDateLimit)
                         //{
-                        //    posts.Add(post);
+                           posts.Add(post);
                         //}
                     }
                 });
@@ -102,7 +102,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Services
             {
                 Parallel.ForEach(prevResults.Statuses, parallerOptions, item =>
                 {
-                    if (TwitterPostType(item) == PostType.Text)
+                    if (TwitterPostType(item) == PostType.Text && !string.IsNullOrEmpty(item.Id.ToString()))
                     {
                         Post post = new Post();
                         post.PostSource = SocialNetwork.Twitter;
@@ -120,7 +120,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Services
                         post.Status = PostStatus.Pending;
                         //if (post.PostDateCreated >= Settings.PostDateLimit)
                         //{
-                        //    posts.Add(post);
+                          posts.Add(post);
                         //}
                         //else
                         //{ isPreviousPost = false; }
