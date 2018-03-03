@@ -1,5 +1,7 @@
 ﻿using Hackathon.SocialWall.Feature.FetchSocialFeeds.Models;
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories;
+using Hackathon.SocialWall.Feature.FetchSocialFeeds.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 using Sitecore.Diagnostics;
 using System;
@@ -18,22 +20,15 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Agents
         {
             try
             {
-                SocialFeedsRepository socialFeedRepo = (SocialFeedsRepository)ServiceLocator.ServiceProvider.GetService(typeof(ISocialFeedsRepository));
-
-
-
-
+                Log.Info("PostFetching-Scheduler Call: Event called! at " + DateTime.Now.ToString(), new object());
+                ISocialFeedsService SocialFeedsService = ServiceLocator.ServiceProvider.GetService<ISocialFeedsService>();
+                SocialFeedsService.AddPostsByHashTags();
                 Log.Info("PostFetching-Scheduler: Event called! at " + DateTime.Now.ToString(), new object());
-
             }
             catch (Exception ex)
             {
                 Log.Info("Exception Thrown in Form Feed Fetch Schedule, Error: " + ex.Message, new object());
-
             }
         }
-
-
-      
     }
 }

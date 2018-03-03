@@ -1,7 +1,13 @@
 ﻿using Hackathon.SocialWall.Feature.FetchSocialFeeds.Models;
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.Services;
+<<<<<<< HEAD
 using Hackathon.SocialWall.Feature.FetchSocialFeeds.ViewModel;
 using Sitecore.Data;
+=======
+using Microsoft.Extensions.DependencyInjection;
+using Sitecore.DependencyInjection;
+using Sitecore.XA.Foundation.Mvc.Controllers;
+>>>>>>> 94c6a162982cb48c60cccdb11fb425ff864c657c
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +19,26 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Controllers
         // GET: Forms
         protected readonly ISocialFeedsService SocialFeedsService;
 
-        public SocialWallController(ISocialFeedsService socialFeedsService)
+        //public SocialWallController(ISocialFeedsService socialFeedsService)
+        //{
+        //    this.SocialFeedsService = socialFeedsService;
+        //}
+
+        public SocialWallController()
         {
-            this.SocialFeedsService = socialFeedsService;
+            this.SocialFeedsService = ServiceLocator.ServiceProvider.GetService<ISocialFeedsService>();
         }
+<<<<<<< HEAD
 
         public System.Web.Http.Results.JsonResult<FeedData> GetWall()
         {
             return Json(GetModel(1, 1, 1, 1, 1, 1));
         }
         public System.Web.Http.Results.JsonResult<FeedData> GetWall(int? vipTwtrPgNo, int? vipInstaPgNo, int? instaVdoPgNo, int? instaImgsPgNo, int? twtrImgsPgNo, int? twtrTwtsPgNo)
+=======
+        // GET: SocialWall
+        protected override object GetModel()
+>>>>>>> 94c6a162982cb48c60cccdb11fb425ff864c657c
         {
             if (vipTwtrPgNo.HasValue && vipInstaPgNo.HasValue && instaVdoPgNo.HasValue && instaImgsPgNo.HasValue && twtrImgsPgNo.HasValue && twtrTwtsPgNo.HasValue)
             {

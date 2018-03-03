@@ -51,14 +51,19 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Repositories
         {
             Item targetItem = Sitecore.Context.Database.Items["{F750B39A-3601-4AC2-8380-B8ABFE97D4DE}"];
             Item[] posts = targetItem.GetChildren().ToArray();
-            return System.Convert.ToInt64(posts.Select(p => p.Fields["SocialNetworkPostId"]).Max());
+            string maxId = posts.Select(p => p.Fields["SocialNetworkPostId"].Value).Max();
+            if (string.IsNullOrEmpty(maxId))
+                return 0;
+            return System.Convert.ToInt64(maxId);
         }
         public long GetMinTwitterPostId(string hashTag)
         {
             Item targetItem = Sitecore.Context.Database.Items["{F750B39A-3601-4AC2-8380-B8ABFE97D4DE}"];
             Item[] posts = targetItem.GetChildren().ToArray();
-            return System.Convert.ToInt64(posts.Select(p => p.Fields["SocialNetworkPostId"]).Min());
-
+            string minId = posts.Select(p => p.Fields["SocialNetworkPostId"].Value).Min();
+            if (string.IsNullOrEmpty(minId))
+                return 0;
+            return System.Convert.ToInt64(minId);
         }
         public bool SaveFeeds(List<Post> posts)
         {

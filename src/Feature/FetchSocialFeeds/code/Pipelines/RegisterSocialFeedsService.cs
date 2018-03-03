@@ -13,8 +13,16 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Pipelines
     {
         public void Configure(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<ISocialFeedsRepository,SocialFeedsRepository>();
             serviceCollection.AddTransient<ISocialFeedsService, SocialFeedsService>();
-        }
+            serviceCollection.AddTransient<ISocialFeedsRepository,SocialFeedsRepository>();
+
+        } //: IServicesConfigurator
+          //{
+          //    public void Configure(IServiceCollection serviceCollection)
+          //    {
+          //        serviceCollection.AddTransient<ISocialFeedsService, SocialFeedsService>();
+          //        serviceCollection.AddTransient<ISocialFeedsRepository,SocialFeedsRepository>();
+
+        //    }
     }
 }
