@@ -120,8 +120,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Feature\Hackathon.SocialWall.Feature.FetchSocialFeeds.config" />
+    <Content Include="App_Config\Include\Feature\Hackathon.SocialWall.Feature.FetchSocialFeeds.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Global.asax" />
+    <Content Include="Views\SocialWall\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SocialWall\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

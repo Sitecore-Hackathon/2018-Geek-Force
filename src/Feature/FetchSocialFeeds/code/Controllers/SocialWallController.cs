@@ -19,7 +19,7 @@ namespace Hackathon.SocialWall.Feature.FetchSocialFeeds.Controllers
             this.SocialFeedsService = socialFeedsService;
         }
         // GET: SocialWall
-        public ActionResult Index()
+        protected override object GetModel()
         {
             SocialFeedsService.AddPostsByHashTags();
             return View();
